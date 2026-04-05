@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CipherController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,3 +10,10 @@ Route::get('/', function () {
 
 Route::get('/', [CipherController::class, 'index']);
 Route::post('/process', [CipherController::class, 'process'])->name('cipher.process');
+
+Route::get('/login', [AuthController::class, 'showLogin']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/dashboard', [AuthController::class, 'dashboard']);
+
+Route::get('/logout', [AuthController::class, 'logout']);
