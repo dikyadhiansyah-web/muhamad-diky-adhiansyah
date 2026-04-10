@@ -12,15 +12,20 @@
 @endif
 
 <form method="POST" action="/login">
-    @csrf
-    <label>Username:</label><br>
-    <input type="text" name="username"><br><br>
+         @csrf
 
-    <label>Password:</label><br>
-    <input type="password" name="password"><br><br>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" placeholder="Masukkan email">
+        </div>
 
-    <button type="submit">Login</button>
-</form>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Masukkan password">
+        </div>
+
+        <button class="btn btn-primary btn-login">Login</button>
+    </form>
 
 </body>
 </html>

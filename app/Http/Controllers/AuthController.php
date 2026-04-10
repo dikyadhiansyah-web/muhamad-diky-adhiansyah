@@ -7,27 +7,26 @@ use App\Models\Pengguna; // <-- letakkan di sini
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function login()
     {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
-
-        // contoh login sederhana (tanpa database)
-        if ($request->username === 'admin' && $request->password === '123') {
-            session(['user' => $request->username]);
-            return redirect('/dashboard');
-        }
-
-        return back()->with('error', 'Login gagal!');
+        return view('login');
     }
+    
+    public function loginProses(Request $request)
+{
+    if ($request->email == 'admin@gmail.com' && $request->password == '123') {
+        session(['login' => true]);
+        return redirect('/dashboard');
+    }
+
+    return back()->with('error', 'Email atau password salah');
+}
 
     public function dashboard()
     {
-        if (!session()->has('user')) {
-            return redirect('/login');
-        }
+        if (!session('login')) {
+        return redirect('/login');
+    }
 
         $data = Pengguna::all(); // ambil data dari database
         return view('daftar_pengguna', compact('data'));
@@ -35,7 +34,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        session()->forget('user');
+        session()->flush();
         return redirect('/login');
     }
 }
