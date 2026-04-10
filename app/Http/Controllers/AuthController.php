@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pengguna; // <-- letakkan di sini
 
 class AuthController extends Controller
 {
-    public function showLogin()
-    {
-        return view('login');
-    }
-
     public function login(Request $request)
     {
         $request->validate([
@@ -33,7 +29,8 @@ class AuthController extends Controller
             return redirect('/login');
         }
 
-        return view('dashboard');
+        $data = Pengguna::all(); // ambil data dari database
+        return view('daftar_pengguna', compact('data'));
     }
 
     public function logout()
