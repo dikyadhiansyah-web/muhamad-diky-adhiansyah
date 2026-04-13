@@ -16,4 +16,13 @@ Route::post('/login', [AuthController::class, 'loginProses']);
 
 Route::get('/dashboard', [AuthController::class, 'dashboard']);
 
+// halaman daftar pengguna
+use App\Http\Controllers\PenggunaController;
+Route::get('/pengguna', [PenggunaController::class, 'index']);
+Route::get('/pengguna/create', [PenggunaController::class, 'create']);
+Route::post('/pengguna/store', [PenggunaController::class, 'store']);
+Route::get('/pengguna/edit/{id_pengguna}', [PenggunaController::class, 'edit']);
+Route::post('/pengguna/update/{id_pengguna}', [PenggunaController::class, 'update']);
+Route::get('/pengguna/delete/{id_pengguna}', [PenggunaController::class, 'destroy']);
+
 Route::get('/logout', [AuthController::class, 'logout']);

@@ -2,18 +2,18 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Edit Pengguna</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         body {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
             height: 100vh;
         }
-        .login-box {
-            width: 350px;
+        .card {
+            width: 400px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
@@ -21,42 +21,35 @@
 </head>
 <body class="d-flex justify-content-center align-items-center">
 
-<div class="card login-box p-4">
-    
-    <h3 class="text-center mb-4">🔐 Login</h3>
+<div class="card p-4">
 
-    @if(session('error'))
-        <div class="alert alert-danger text-center">
-            {{ session('error') }}
-        </div>
-    @endif
+    <h3 class="text-center mb-4">✏️ Edit Pengguna</h3>
 
-    <form method="POST" action="/login">
+    <form action="/pengguna/update/{{ $data->id_pengguna }}" method="POST">
         @csrf
 
         <div class="mb-3">
             <label class="form-label">Email</label>
             <input 
-                type="email" 
+                type="text" 
                 name="email" 
-                class="form-control" 
-                placeholder="Masukkan email"
-            >
+                value="{{ $data->email }}" 
+                class="form-control">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Password</label>
             <input 
-                type="password" 
+                type="text" 
                 name="password" 
-                class="form-control" 
-                placeholder="Masukkan password"
-            >
+                value="{{ $data->password }}" 
+                class="form-control">
         </div>
 
-        <button class="btn btn-primary w-100">
-            Login
+        <button type="submit" class="btn btn-primary w-100">
+            Update
         </button>
+
     </form>
 
 </div>

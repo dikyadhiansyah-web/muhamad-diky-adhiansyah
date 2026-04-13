@@ -13,7 +13,7 @@ class Pengguna extends Model
     //nama kolom yang bisa di isi
     protected $fillable = ['email', 'password'];
     //nama primarykey
-    protected $primarykey = 'id_pengguna';
+    protected $primaryKey = 'id_pengguna';
 
     public $timestamps = true;
 }
