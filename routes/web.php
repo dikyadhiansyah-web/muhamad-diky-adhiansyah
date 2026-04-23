@@ -25,4 +25,8 @@ Route::get('/pengguna/edit/{id_pengguna}', [PenggunaController::class, 'edit']);
 Route::post('/pengguna/update/{id_pengguna}', [PenggunaController::class, 'update']);
 Route::get('/pengguna/delete/{id_pengguna}', [PenggunaController::class, 'destroy']);
 
+
+use App\Http\Controllers\BukuController;
+Route::get('/buku', [BukuController::class, 'index']);
+
 Route::get('/logout', [AuthController::class, 'logout']);
